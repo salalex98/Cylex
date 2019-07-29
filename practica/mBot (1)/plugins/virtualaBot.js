@@ -1,25 +1,39 @@
 class VirtualBot {
-	moveRight(bot){
-		bot.direction.x=1;
-		bot.direction.y=0;
-		bot.front='right';
+	moveRight(){
+		this.controller.direction.x=1;
+		this.controller.direction.y=0;
+		this.controller.front='right';
 	}
 
-	moveLeft(bot){
-		bot.direction.x=-1;
-		bot.direction.y=0;
-		bot.front='left';
+	moveLeft(){
+		this.controller.direction.x=-1;
+		this.controller.direction.y=0;
+		this.controller.front='left';
 	}
 
-	moveUp(bot){
-		bot.direction.x=0;
-		bot.direction.y=-1;
-		bot.front='up';
+	moveUp(){
+		this.controller.direction.x=0;
+		this.controller.direction.y=-1;
+		this.controller.front='up';
 	}
 
-	moveDown(bot){
-		bot.direction.x=0;
-		bot.direction.y=1;
-		bot.front='down';
+	moveDown(){
+		this.controller.direction.x=0;
+		this.controller.direction.y=1;
+		this.controller.front='down';
+	}
+
+	clearBot() {
+		var bot = document.getElementsByClassName(this.controller.settings.class_name);
+		bot[0].classList.remove(this.controller.settings.class_name);	
+	}
+
+	initBot() {
+		var bot = this.getCellByPositions(this.controller.position.x, this.controller.position.y);
+		if(!bot.classList.contains(this.settings.visited)){
+			bot.classList.add(this.settings.visited);
+			bot.classList.add(this.front);
+		}
+		bot.classList.add(this.settings.class_name);
 	}
 }
