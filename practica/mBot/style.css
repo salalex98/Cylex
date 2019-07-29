@@ -1,0 +1,34 @@
+.cell {
+	width: 20px;
+	height: 20px;
+	/*border: 1px solid black;*/
+}
+
+.row {
+	display: flex;
+}
+
+.wall {
+	background-color: black;
+}
+
+.start {
+	border: 1px solid red;	
+}
+
+.end {
+	background-color:blue;	
+}
+
+.visited {
+	background-image: url("ball.jpg");
+	background-repeat: no-repeat;
+  	background-size: 100%;
+}	
+
+.bot {
+	background-image: url("mbot.png");
+	background-repeat: no-repeat;
+  	background-size: 100%;
+}
+

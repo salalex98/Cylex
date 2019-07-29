@@ -1,0 +1,36 @@
+.cell {
+	width: 20px;
+	height: 20px;
+	border: 1px solid white;
+	/*border: 1px solid black;*/
+}
+
+.row {
+	display: flex;
+}
+
+.wall {
+	background-color: black;
+	border: 1px solid black;
+}
+
+.start {
+	border: 1px solid red;	
+}
+
+.end {
+	border: 1px solid blue;	
+}
+
+	
+.visited,.up, .down, .left, .right {
+	background-image: url("dot.jpg");
+	background-repeat: no-repeat;
+  	background-size: 100%;
+}
+
+.bot {
+	background-image: url("mbot.png");
+	background-repeat: no-repeat;
+  	background-size: 100%;
+}

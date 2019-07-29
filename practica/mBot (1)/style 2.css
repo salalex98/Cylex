@@ -1,0 +1,27 @@
+.cell {
+	width: 20px;
+	height: 20px;
+	/*border: 1px solid black;*/
+}
+
+.row {
+	display: flex;
+}
+
+.wall {
+	background-color: black;
+}
+
+.start {
+	border: 5px solid red;	
+}
+
+.end {
+	border: 5px solid blue;	
+}
+
+.bot {
+	background-image: url("mbot.png");
+	background-repeat: no-repeat;
+  	background-size: 100%;
+}	

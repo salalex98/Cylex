@@ -1,0 +1,33 @@
+.clasa1 {
+	margin-left: 200px;
+}
+
+.tabel1 {
+	background-color: red;
+}
+
+.tabel2 {
+	background-color: yellow;
+}
+
+.tabel3 {
+	background-color: blue;
+}
+
+.tabel4 {
+	background-color: cyan;
+}
+td:hover {
+	background-color: pink;
+	font-size: 80px;
+}
+th:hover {
+	background-color: green;
+	font-size: 80px;
+}
+
+td {
+	width: 40px;
+	height: 40px;
+	border: 1px solid black;
+}
