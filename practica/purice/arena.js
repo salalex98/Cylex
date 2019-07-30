@@ -91,4 +91,4 @@ class Arena {
 }
 
 
-var arena = new Arena(5,5);
+var arena = new Arena(20,20);

@@ -1,3 +1,17 @@
+function kill(){
+	console.log('killed');
+	this.classList.add(purice.settings.dead);
+	var self = this;
+	purice.score+=purice.speed*10;
+	purice.speed++;
+	document.getElementById("tabela").innerHTML = "Scorul este: "+purice.score+" si viteza este: "+(1010-purice.speed*10)+"ms";
+	setTimeout(function() {
+		self.classList.remove(purice.settings.dead);
+		}, 10000);
+	purice.limit--;
+	this.removeEventListener('click', kill,true)
+}
+
 class Bug {
 	constructor(arena) {
 		this.arena = arena;
@@ -7,29 +21,31 @@ class Bug {
 		}
 		this.limit = this.arena.settings.width * this.arena.settings.height;
 		this.next ={
-			'x':0,
-			'y':0
+			'x':Math.floor(Math.random() * this.arena.settings.width),
+			'y':Math.floor(Math.random() * this.arena.settings.height)
 		}
 		this.position = {
 			'x':0,
 			'y':0
 		}
+		this.speed = 1;
+		this.score =0;
+		this.bug = this.randomPlace();
 		this.init();
 	}
 
 	init(){
-		this.placeBug();
-		this.run();
-	}
-
-	run(){
+		var time = 1010 - this.speed*10;
 		var self = this;
-		var time = 200;
-		this.randomPlace();
+		var bug = this.randomPlace();
+		this.clearBug(this.bug);
+		this.bug = bug;
 		if(this.limit>0){
 			setTimeout(function() {
-		 			self.run();	
+		 			self.init();	
 			 	}, time);
+		}else{
+			console.log('stop');
 		}
 	}
 
@@ -38,11 +54,10 @@ class Bug {
 		var bug = this.getCellByPositions(this.position.x, this.position.y);
 		if(!bug.classList.contains(this.settings.bug) || !bug.classList.contains(this.settings.dead)){
 			bug.classList.add(this.settings.bug);
-			// var self = this;
-			// bug.addEventListener('click', function(){	
-			// 	this.classList.add(self.settings.dead);
-			// }, true);
+			var self = this;
+			bug.addEventListener('click', kill, true);
 			this.limit--;
+			return bug;
 		}
 	}
 
@@ -51,10 +66,8 @@ class Bug {
 		if(bug.classList.contains(this.settings.bug) || bug.classList.contains(this.settings.dead)){
 			return false;
 		}else{
-			console.log(this.next.x+'-'+this.next.y);
 			this.position.x = this.next.x;
 			this.position.y = this.next.y;
-			console.log(this.position.x+'-'+this.position.y);
 			return true;
 		}
 	}
@@ -63,19 +76,14 @@ class Bug {
 		do{
 			this.next.x = Math.floor(Math.random() * this.arena.settings.width);
 			this.next.y = Math.floor(Math.random() * this.arena.settings.height);
-			console.log(this.canPlace());	
 		}while(!this.canPlace());
-		this.placeBug();
-		this.clearBug();
+		return this.placeBug();
 	}
 
-	clearBug() {
+	clearBug(bug) {
 		var self = this;
-		var bug = document.getElementsByClassName(this.settings.bug);
-		bug[0].classList.remove(this.settings.bug);	
-		// bug[0].removeEventListener('click', function(){
-		// 		this.classList.add(self.settings.dead);
-		// 	}, true);
+		bug.classList.remove(this.settings.bug);	
+		bug.removeEventListener('click', kill, true);
 		this.limit++;
 	}
 
