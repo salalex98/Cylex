@@ -1,0 +1,41 @@
+.cell {
+	width: 18px;
+	height: 18px;
+}
+
+.top {
+	border-top: 1px solid black;
+}
+
+.bottom{
+	border-bottom: 1px solid black;
+}
+
+.left{
+	border-left: 1px solid black;
+}
+
+.right{
+	border-right: 1px solid black;
+}
+
+.bug{
+	background-image: url("bug.jpeg");
+	background-repeat: no-repeat;
+  	background-size: 100%;
+}
+
+.dead{
+	background-image: url("dead.jpeg");
+	background-repeat: no-repeat;
+  	background-size: 100%;
+}
+
+canvas {
+    background: #cdcdcd;
+    width: 1920px;
+    height: 1080px;
+}​
+.row {
+	display: flex;
+}
